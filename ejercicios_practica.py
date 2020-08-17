@@ -15,6 +15,7 @@ __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
 __version__ = "1.3"
 
+import alejandro
 
 def ej1():
     print('Comencemos a crear lo nuestro!')
@@ -32,6 +33,7 @@ def ej1():
     Importe el módulo a este programa/documento para su uso
     en el resto de los ejercicios
     '''
+    print('Modulo creado e importado: "alejandro"')
 
 
 def ej2():
@@ -54,6 +56,10 @@ def ej2():
     de números generados.
     Imprimir en pantalla la lista ordenada
     '''
+    print('Números de dados:')
+    dados = alejandro.lista_aleatoria(inicio=1,fin=6,cantidad=5)
+    print(dados)
+    print("Lista de dados ordenados:\n",alejandro.ordenar(numeros=dados))
 
 
 def ej3():
@@ -87,6 +93,12 @@ def ej3():
     vistos en clase para ver como se implementa max con esa key
 
     '''
+    print('Tiros de dados:')
+    dados = alejandro.lista_aleatoria(inicio=1,fin=6,cantidad=5)
+    print(dados)
+    for i in range(6):
+        print('El número {} aparece en la lista de dados tirados: {} veces'.format(i+1,dados.count(i+1)))
+    print('\nEl número que más se repitió en el tiro de dados fue el',max(dados,key=dados.count))
 
 
 def ej4():
@@ -144,11 +156,32 @@ def ej4():
     guardados" tenga "generala", es decir, 5 números iguales.
 
     '''
+    dados_guardados = []
+    dados_guardados.clear
+    print('Primer tiro de dados:')
+    primer_tiro = alejandro.lista_aleatoria(inicio=1,fin=6,cantidad=5)
+    print(primer_tiro)
+    dado_mas = max(primer_tiro,key=primer_tiro.count)
+    print('El número que más salió en el primer tiro fue:',dado_mas)
+    for i in range(primer_tiro.count(dado_mas)):
+        dados_guardados.append(dado_mas)
+    while len(dados_guardados) != 5:
+        siguiente_tiro = alejandro.lista_aleatoria(inicio=1,fin=6,cantidad=(5-len(dados_guardados)))
+        print('El nuevo tiro es:\n',siguiente_tiro)
+        for i in range(siguiente_tiro.count(dado_mas)):
+            dados_guardados.append(dado_mas)
+    print('GENERALA!!!!')
 
 
 if __name__ == '__main__':
-    print("Ejercicios de práctica")
-    # ej1()
-    # ej2()
-    # ej3()
-    # ej4()
+    print("\n\n                 Ejercicios de práctica\n")
+    print('\n       Ej1:Importar archivo')
+    ej1()
+    print('\n       Ej2:Tiro de dados')
+    ej2()
+    print('\n       Ej3:Analisis de los dados')
+    ej3()
+    print('\n       Ej4:Jugando a la generala')
+    ej4()
+
+    print('\n******************* FIN DEL PROGRAMA *******************')

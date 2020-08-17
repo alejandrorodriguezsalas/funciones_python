@@ -19,17 +19,58 @@ import random
 
 
 def imprimir_nombre(nombre, apellido):
-    pass
-    # En este lugar debe colocar el "print" e imprimir
-    # en pantalla el nombre y apellido que vienen por parámetro
-    # print(.....)
+    '''
+    En este lugar debe colocar el "print" e imprimir en \n
+    pantalla el nombre y apellido que vienen por parámetro'''
+    print(nombre,apellido)
 
 
 def promedio(numeros):
+    
     # Alumno:
     # 1) calcule el promedio
     # 2) use "return" para retornar ese valor
-    pass  # Cuando termine de implementar está función borrar "pass"
+     # Cuando termine de implementar está función borrar "pass"
+     '''
+     Devuelve el promedio obtenido de la lista de \n
+     (numeros) tomados como parametros
+     '''
+     prom = sum(numeros) / len(numeros)
+     return prom
+
+
+def ordenar (numeros):
+    '''
+    Devuelve la lista de (numeros) ingresados por \n
+    parametros de forma ordenada de mayor a menor
+    '''
+    numeros.sort(reverse=True)
+    return numeros
+
+
+def lista_aleatoria(inicio,fin,cantidad):
+    '''
+    Genera lista de numeros ramdon de cuyas\n
+    características son ingresadas por paramatro\n
+    números entre (inicio,fin) cantidad de números(cantidad)
+    '''
+    lista = []
+    lista.clear()
+    for i in range(cantidad):
+        numero = random.randrange(inicio, fin+1)
+        lista.append(numero)
+    
+    return lista
+        
+    
+def contar(lista_numeros,numero):
+    '''
+    contar la cantidad de veces que aparece un\n
+    número especificado dentro de la lista
+    Ambas ingresadas por parametro(lista_numeros,numero)
+    '''
+    cont = lista_numeros.count(numero)
+    return cont
 
 
 def ej1():
@@ -39,7 +80,7 @@ def ej1():
     # Esa función ya se encuentra a medio armar al principio de este archivo.
     # Debe cumpletar la función para que se imprima en pantalla su nombre y apellido
     # Debe invocar a la función como:
-    imprimir_nombre('mi_nombre', 'mi_apellido')
+    imprimir_nombre('Alejandro', 'Rodriguez Salas')
 
     # Reemplazar por su nombre y apellido los textos
 
@@ -47,7 +88,7 @@ def ej1():
 def ej2():
     # Ejercicios con funciones del sistema
     numeros = [2, 4, 6, 8, 10, 12]
-
+    
     '''
     Realice una funcion llamada "promedio" la cual
     reciba como parámetro una lista de números y calcule
@@ -77,9 +118,10 @@ def ej2():
     # resultante.
 
     # Llamar a la función en este lugar y capturar el valor del retorno
-    # promedio_re
+    promedio_re = promedio(numeros)
 
     # Luego imprimir en pantalla el valor resultante, tal que:
+    print('El promedio de {} es igual a : {}'.format(numeros,promedio_re))
 
 
 def ej3():
@@ -96,11 +138,15 @@ def ej3():
     similar, la debe crear y escribir abajo de ella.
 
     '''
+    
+    print(numeros)
 
     # Luego de crear la función invocarla en este lugar:
-    # lista_ordenada = ordenar(numeros)
+    
+    lista_ordenada = ordenar(numeros)
     # Imprimir en pantalla "lista_ordenada" que tendrá
     # los valores retornado por la función ordenar
+    print('La lista ordena de mayor a menor es:\n',lista_ordenada)
 
 
 def ej4():
@@ -135,10 +181,13 @@ def ej4():
 
     Finalmente dicha función debe retornar la lista de elementos random generados.
     '''
+    
 
     # Invocar lista_aleatoria
     # mi_lista_aleatorio = lista_aleatoria(inicio, fin, cantidad)
     # print(mi_lista_aleatorio)
+    mi_lista_aleatorio = lista_aleatoria(inicio, fin, cantidad)
+    print(mi_lista_aleatorio)
 
 
 def ej5():
@@ -163,11 +212,25 @@ def ej5():
     # Luego quiero averiguar cuantas veces se repite el numero 3
     # cantidad_tres = contar(lista_numeros, 3)
 
+    mi_lista_aleatorio = lista_aleatoria(inicio=0,fin=9,cantidad=5)
+    numero_tres = contar(mi_lista_aleatorio,numero=3)
+
+    print('La lista de números es:\n',mi_lista_aleatorio)
+    print('El número 3 aparece {} veces'.format(numero_tres))
+
+
 
 if __name__ == '__main__':
-    print("Bienvenidos a otra clase de Inove con Python")
+    print('\n                 Bienvenidos a otra clase de Inove con Python      \n')
+    print('\n       Ej1:Impresión a travez de una función\n')
     ej1()
-    # ej2()
-    # ej3()
-    # ej4()
-    # ej5()
+    print('\n        Ej2:Función promedio\n')
+    ej2()
+    print('\n       Ej3:Ordenar lista de números\n')
+    ej3()
+    print('\n       Ej4:Originar lista con números random\n')
+    ej4()
+    print('\n       Ej5:Originar lista y contar los números 3\n')
+    ej5()
+
+    print('\n******************* FIN DEL PROGRAMA *******************')
